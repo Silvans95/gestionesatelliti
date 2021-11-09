@@ -31,44 +31,45 @@
 							<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
 		
 		
-							<form method="post" action="${pageContext.request.contextPath}/impiegato/list" class="row g-3" >
+							<form method="post" action="${pageContext.request.contextPath}/satellite/list" class="row g-3" >
 							
 							
 								<div class="col-md-6">
-									<label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
-									<input type="text" name="nome" id="nome" class="form-control" placeholder="Inserire il nome"  >
+									<label for="denominazione" class="form-label">Denominazione <span class="text-danger">*</span></label>
+									<input type="text" name="denominazione" id="denominazione" class="form-control" placeholder="Inserire denominazione"  >
 								</div>
 								
 								<div class="col-md-6">
-									<label for="cognome" class="form-label">Cognome <span class="text-danger">*</span></label>
-									<input type="text" name="cognome" id="cognome" class="form-control" placeholder="Inserire il cognome"  >
-								</div>
-							
-								<div class="col-md-6">
-									<label for="matricola" class="form-label">Nickname <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" name="matricola" id="matricola" placeholder="Inserire la matricola"  >
+									<label for="codice" class="form-label">Codice <span class="text-danger">*</span></label>
+									<input type="text" name="codice" id="codice" class="form-control" placeholder="Inserire il codice"  >
 								</div>
 								
 								<div class="col-md-3">
-									<label for="dataDiNascita" class="form-label">Data di Nascita <span class="text-danger">*</span></label>
-                        			<input class="form-control" id="dataDiNascita" type="date" placeholder="dd/MM/yy"
-                            			title="formato : gg/mm/aaaa"  name="dataDiNascita"   >
+									<label for="dataLancio" class="form-label">Data di Lancio <span class="text-danger">*</span></label>
+                        			<input class="form-control" id="dataLancio" type="date" placeholder="dd/MM/yy"
+                            			title="formato : gg/mm/aaaa"  name="dataLancio"   >
+								</div>
+								
+								<div class="col-md-3">
+									<label for="dataRientro" class="form-label">Data di Rientro <span class="text-danger">*</span></label>
+                        			<input class="form-control" id="dataRientro" type="date" placeholder="dd/MM/yy"
+                            			title="formato : gg/mm/aaaa"  name="dataRientro"   >
 								</div>
 								
 								<div class="col-md-3">
 									<label for="stato" class="form-label">Stato <span class="text-danger">*</span></label>
 								    <select class="form-select" id="stato" name="stato" >
 								    	<option value="" selected> - Selezionare - </option>
-								      	<option value="ATTIVO" >ATTIVO</option>
-								      	<option value="SOSPESO" >SOSPESO</option>
-								      	<option value="DIMESSO" >DIMESSO</option>
+								      	<option value="INMOVIMENTO" >IN MOVIMENTO</option>
+								      	<option value="FISSO" >FISSO</option>
+								      	<option value="DISATTIVATO" >DISATTIVATO</option>
 								    </select>
 								</div>
 								
 								
 							<div class="col-12">
 								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
-								<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath}/impiegato/insert">Add New</a>
+								<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath}/satellite/insert">Add New</a>
 								<input class="btn btn-outline-warning" type="reset" value="Ripulisci">
 							</div>
 		
