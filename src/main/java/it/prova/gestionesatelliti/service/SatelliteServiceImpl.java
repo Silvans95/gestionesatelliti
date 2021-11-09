@@ -44,21 +44,21 @@ public class SatelliteServiceImpl implements SatelliteService {
 
 	@Override
 	@Transactional
-	public void aggiorna(Satellite impiegatoInstance) {
-		repository.save(impiegatoInstance);
+	public void aggiorna(Satellite satelliteInstance) {
+		repository.save(satelliteInstance);
 	}
 
 	@Override
 	@Transactional
-	public void inserisciNuovo(Satellite impiegatoInstance) {
-		repository.save(impiegatoInstance);
+	public void inserisciNuovo(Satellite satelliteInstance) {
+		repository.save(satelliteInstance);
 
 	}
 
 	@Override
 	@Transactional
-	public void rimuovi(Satellite impiegatoInstance) {
-		repository.delete(impiegatoInstance);
+	public void rimuovi(Satellite satelliteInstance) {
+		repository.delete(satelliteInstance);
 	}
 
 	@Override

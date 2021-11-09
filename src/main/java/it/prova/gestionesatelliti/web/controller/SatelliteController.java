@@ -73,5 +73,43 @@ public class SatelliteController {
 		model.addAttribute("show_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
 		return "satellite/show";
 	}
+	
+
+	@GetMapping("/delete/{idSatellite}")
+	public String delete(@PathVariable(required = true) Long idSatellite, Model model) {
+		model.addAttribute("delete_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
+		return "satellite/delete";
+	}
+
+	@GetMapping("/remove/{idSatellite}")
+	public String salvadelete(@PathVariable(required = true) Long idSatellite, ModelMap model,
+			RedirectAttributes redirectAttrs) {
+
+		Satellite satDaRim = satelliteService.caricaSingoloElemento(idSatellite);
+		satelliteService.rimuovi(satDaRim);
+
+		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
+		return "redirect:/satellite";
+	}
+	
+	@GetMapping("/update/{idSatellite}")
+	public String update(@PathVariable(required = true) Long idSatellite, Model model) {
+		model.addAttribute("update_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
+		return "satellite/update";
+	}
+
+	@PostMapping("/salvaupdate")
+	public String saveupdate(@ModelAttribute("update_satellite_attr") Satellite satellite, ModelMap model,
+			RedirectAttributes redirectAttrs, BindingResult result) {
+
+		if (result.hasErrors())
+			return "satellite/update";
+
+		satelliteService.aggiorna(satellite);
+
+		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
+		return "redirect:/satellite";
+
+	}
 
 }

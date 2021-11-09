@@ -6,7 +6,7 @@
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 	 	
-	   <title>Visualizza Elemento</title>
+	   <title>Visualizza Elemento Da Rimuovere</title>
 	   
 	 </head>
 	   <body class="d-flex flex-column h-100">
@@ -23,37 +23,37 @@
 					    <div class='card-header'>
 					        <h5>Visualizza dettaglio</h5>
 					    </div>
-					    
+					    <form action="${pageContext.request.contextPath}/satellite/salvadelete" method="post">
 					
 					    <div class='card-body'>
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Id:</dt>
-							  <dd class="col-sm-9">${show_satellite_attr.id}</dd>
+							  <dd class="col-sm-9">${delete_satellite_attr.id}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Denominazione:</dt>
-							  <dd class="col-sm-9">${show_satellite_attr.denominazione}</dd>
+							  <dd class="col-sm-9" >${delete_satellite_attr.denominazione}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Codice:</dt>
-							  <dd class="col-sm-9">${show_satellite_attr.codice}</dd>
+							  <dd class="col-sm-9">${delete_satellite_attr.codice}</dd>
 					    	</dl>
 					    	
-					    <dl class="row">
+					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Data di Lancio:</dt>
-							  <dd class="col-sm-9"><fmt:formatDate type="date" value = "${show_satellite_attr.dataLancio}" /></dd>
+							  <dd class="col-sm-9"><fmt:formatDate type="date" value = "${delete_satellite_attr.dataLancio}" /></dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Data di Rientro:</dt>
-							  <dd class="col-sm-9"><fmt:formatDate type="date" value = "${show_satellite_attr.dataRientro}" /></dd>
+							  <dd class="col-sm-9"><fmt:formatDate type="date" value = "${delete_satellite_attr.dataRientro}" /></dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Stato :</dt>
-							  <dd class="col-sm-9">${show_satellite_attr.stato}</dd>
+							  <dd class="col-sm-9">${delete_satellite_attr.stato}</dd>
 					    	</dl>
 					    	
 					    	
@@ -61,11 +61,15 @@
 					    <!-- end card body -->
 					    
 					    <div class='card-footer'>
+					        <a href="${pageContext.request.contextPath}/satellite/remove/${delete_satellite_attr.id}" class='btn btn-outline-danger' style='width:90px'>
+					            <i class='fa fa-chevron-left'></i> Rimuovi
+					        </a>
 					        <a href="${pageContext.request.contextPath}/satellite" class='btn btn-outline-secondary' style='width:80px'>
 					            <i class='fa fa-chevron-left'></i> Back
 					        </a>
 					    </div>
 					<!-- end card -->
+					  </form>
 					</div>	
 			  
 			    
