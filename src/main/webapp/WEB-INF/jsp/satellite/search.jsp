@@ -102,11 +102,16 @@
 				<ul>
 					<li>Visualizza i satelliti attivi lanciati da più di due anni
 						<a class="btn btn-outline-primary ml-2"
-						href="${pageContext.request.contextPath}/satellite/findyears">Visualizza</a>
+						href="${pageContext.request.contextPath}/satellite/ricercaDueAnni">Visualizza</a>
 					</li>
-
-					<li>secondo elemento</li>
-					<li>terzo elemento</li>
+						<br>
+					<li>Visualizza i satelliti disattivati
+						<a class="btn btn-outline-primary ml-2"
+						href="${pageContext.request.contextPath}/satellite/ricercaDisattivati">Visualizza</a></li>
+						<br>
+					<li>Visualizza i satelliti fissi da piu di 10 anni
+						<a class="btn btn-outline-primary ml-2"
+						href="${pageContext.request.contextPath}/satellite/ricercaDisattivati">Visualizza</a></li>
 				</ul>
 
 			</div>

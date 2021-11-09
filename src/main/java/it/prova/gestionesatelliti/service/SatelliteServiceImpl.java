@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.gestionesatelliti.model.Satellite;
+import it.prova.gestionesatelliti.model.StatoSatellite;
 import it.prova.gestionesatelliti.repository.SatelliteRepository;
 
 @Service
@@ -104,12 +105,26 @@ public class SatelliteServiceImpl implements SatelliteService {
 	}
 	
 	
+
 	@Transactional(readOnly = true)
-	public List<Satellite> findByYear() {
-		Date dataDueAnni =  new Date ();
-		dataDueAnni.setYear(dataDueAnni.getYear()-2);
-		
-		return (List<Satellite>) repository.findAllByDataLancioLessThanEqualAndStatoNot(dataDueAnni, "DISATTIVATO");
+	public List<Satellite> findDaPiuDiDueAnniENonDisattivati() {
+		Date date = new Date();
+		date.setYear(date.getYear()-2);
+		System.out.println(date);
+		return repository.findAllByDataLancioLessThanAndStatoNot(date, StatoSatellite.DISATTIVATO);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Satellite> findDisattivatiMaNonRientrati() {
+		return repository.findAllByStatoEqualsAndDataRientroEquals(StatoSatellite.DISATTIVATO, null);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Satellite> findDaPiuDiDieciAnniEFissi() {
+		Date date = new Date();
+		date.setYear(date.getYear()-10);
+		System.out.println(date);
+		return repository.findAllByDataLancioLessThanAndStatoEquals(date, StatoSatellite.FISSO);
 	}
 
 }

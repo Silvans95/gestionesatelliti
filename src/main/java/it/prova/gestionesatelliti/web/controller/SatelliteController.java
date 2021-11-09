@@ -111,12 +111,26 @@ public class SatelliteController {
 
 	}
 
-	@GetMapping("/findyears")
-	public ModelAndView findyears() {
-		ModelAndView mv = new ModelAndView();
-		List<Satellite> results = satelliteService.findByYear();
-		mv.addObject("satellite_list_attribute", results);
-		mv.setViewName("satellite/list");
-		return mv;
+//	metodi aggiuntivi #####################################################
+
+	@GetMapping("/ricercaDueAnni")
+	public String ricercaDueAnni(Model model) {
+		List<Satellite> satelliti = satelliteService.findDaPiuDiDueAnniENonDisattivati();
+		model.addAttribute("satellite_list_attribute", satelliti);
+		return "satellite/list";
+	}
+
+	@GetMapping("/ricercaDisattivati")
+	public String ricercaDisattivati(Model model) {
+		List<Satellite> satelliti = satelliteService.findDisattivatiMaNonRientrati();
+		model.addAttribute("satellite_list_attribute", satelliti);
+		return "satellite/list";
+	}
+
+	@GetMapping("/RicercaDieciAnniEFissi")
+	public String RicercaDieciAnniEFissi(Model model) {
+		List<Satellite> satelliti = satelliteService.findDaPiuDiDieciAnniEFissi();
+		model.addAttribute("satellite_list_attribute", satelliti);
+		return "satellite/list";
 	}
 }
