@@ -2,6 +2,7 @@
 package it.prova.gestionesatelliti.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,6 +101,15 @@ public class SatelliteServiceImpl implements SatelliteService {
 		}
 
 		return typedQuery.getResultList();
+	}
+	
+	
+	@Transactional(readOnly = true)
+	public List<Satellite> findByYear() {
+		Date dataDueAnni =  new Date ();
+		dataDueAnni.setYear(dataDueAnni.getYear()-2);
+		
+		return (List<Satellite>) repository.findAllByDataLancioLessThanEqualAndStatoNot(dataDueAnni, "DISATTIVATO");
 	}
 
 }

@@ -73,7 +73,6 @@ public class SatelliteController {
 		model.addAttribute("show_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
 		return "satellite/show";
 	}
-	
 
 	@GetMapping("/delete/{idSatellite}")
 	public String delete(@PathVariable(required = true) Long idSatellite, Model model) {
@@ -91,7 +90,7 @@ public class SatelliteController {
 		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
 		return "redirect:/satellite";
 	}
-	
+
 	@GetMapping("/update/{idSatellite}")
 	public String update(@PathVariable(required = true) Long idSatellite, Model model) {
 		model.addAttribute("update_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
@@ -99,7 +98,7 @@ public class SatelliteController {
 	}
 
 	@PostMapping("/salvaupdate")
-	public String saveupdate(@ModelAttribute("update_satellite_attr") Satellite satellite, ModelMap model,
+	public String saveupdate(@Valid @ModelAttribute("update_satellite_attr") Satellite satellite, ModelMap model,
 			RedirectAttributes redirectAttrs, BindingResult result) {
 
 		if (result.hasErrors())
@@ -112,4 +111,12 @@ public class SatelliteController {
 
 	}
 
+	@GetMapping("/findyears")
+	public ModelAndView findyears() {
+		ModelAndView mv = new ModelAndView();
+		List<Satellite> results = satelliteService.findByYear();
+		mv.addObject("satellite_list_attribute", results);
+		mv.setViewName("satellite/list");
+		return mv;
+	}
 }
